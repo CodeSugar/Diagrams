@@ -7,7 +7,7 @@ from diagrams.gcp.analytics import PubSub
 from diagrams.gcp.compute import GCF
 from diagrams.onprem.container import Docker
 
-with Diagram("PDF's Generator", show=True, direction="LR"):
+with Diagram("PDF's Generator", show=False, direction="LR"):
 
     with Cluster("Webflow"):
         web = Storage("WebSite")

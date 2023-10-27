@@ -16,15 +16,19 @@ from diagrams.onprem.database import Mysql
 
 
 
-with Diagram("Personal", show=True, direction="LR"):
+with Diagram("Personal", show=False, direction="LR"):
 
-    
-
-    with Cluster("On Premise" , direction="RL"):
+    with Cluster("On Premise" ):
         with Cluster("Rp4"):
-            pihole = Custom("PiHole", "./extras/pihole.png")
+            caddy = Custom("caddy", "./extras/caddy.png")
+            dashboard = Custom("dashboard", "./extras/dashboard.png")
             passbolt = Custom("passbolt", "./extras/passbolt.png")
             redis = Redis("Redis")
+        with Cluster("Graveyard"):
+            pihole = Custom("PiHole", "./extras/pihole.png")
+            penpot = Custom("Penpot", "./extras/penpot.png")
+        caddy >> [dashboard,passbolt] 
+
 
     with Cluster("Oracle Cloud", direction="RL"):
         with Cluster("VM1"):
@@ -33,4 +37,4 @@ with Diagram("Personal", show=True, direction="LR"):
 
 
 
-#    [ga,fb,hub]>>airbyte >> db >> dashbaord
+#    [ga,fb,hub]>>airbyte >> db >> dashbaor
